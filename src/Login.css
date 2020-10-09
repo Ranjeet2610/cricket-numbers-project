@@ -1,0 +1,14 @@
+.bg_login{
+    background-image: url("https://www.park9.bet/assets/images/login-bgs.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.logo{
+    background-image: url("https://www.park9.bet/assets/images/login-bgs.jpg");
+    border-radius: 10px;
+}
+.casinobg{
+    background-image: url("./images/livegame.jpg");
+
+}
