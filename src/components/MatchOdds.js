@@ -232,129 +232,131 @@ export default class MatchOdds extends Component {
 
           let avilBlack;
           let availLay;
-          if (this.state.marketOdds.length > 0) {
-            let sordataBack = this.state.marketOdds[0].runners[
-              index
-            ].ex.availableToBack.sort(function (a, b) {
-              return a.price - b.price;
-            });
-            if (sordataBack.length < 3) {
-              sordataBack.unshift({ price: 0, size: 0.0 });
+          if(this.state.marketOdds !=undefined){
+            if (this.state.marketOdds.length > 0) {
+              let sordataBack = this.state.marketOdds[0].runners[
+                index
+              ].ex.availableToBack.sort(function (a, b) {
+                return a.price - b.price;
+              });
+              if (sordataBack.length < 3) {
+                sordataBack.unshift({ price: 0, size: 0.0 });
+              }
+  
+              avilBlack = sordataBack.map((itemback) => {
+                return (
+                  <td
+                    className="32047099_0availableToBack2_price_1171389306"
+                    onClick={() =>
+                      this.placeBet(
+                        "Back",
+                        this.state.marketOdds[0].runners[index].ex
+                          .availableToBack[2].price,
+                        itemback,
+                        item,
+                        this.state.marketOdds
+                      )
+                    }
+                  >
+                    <span id="32047099_0availableToBack2_price_1171389306">
+                      {itemback.price}
+                    </span>
+                    <span id="32047099_0availableToBack2_size_1171389306">
+                      {itemback.size}
+                    </span>
+                  </td>
+                );
+              });
+              let sordataLay = this.state.marketOdds[0].runners[
+                index
+              ].ex.availableToLay.sort(function (a, b) {
+                return a.price - b.price;
+              });
+              if (sordataLay.length < 3) {
+                sordataLay.push({ price: 0, size: 0.0 });
+              }
+              availLay = sordataLay.map((itemlay) => {
+                return (
+                  <td
+                    className="32047099_0availableToBack2_price_1171389306"
+                    onClick={() =>
+                      this.placeBet(
+                        "Lay",
+                        this.state.marketOdds[0].runners[index].ex
+                          .availableToLay[0].price,
+                        itemlay,
+                        item,
+                        this.state.marketOdds
+                      )
+                    }
+                  >
+                    <span id="32047099_0availableToBack2_price_1171389306">
+                      {itemlay.price}
+                    </span>
+                    <span id="32047099_0availableToBack2_size_1171389306">
+                      {itemlay.size}
+                    </span>
+                  </td>
+                );
+              });
+            } else {
+              avilBlack = [
+                { price: 0, size: 0.0 },
+                { price: 0, size: 0.0 },
+                { price: 0, size: 0.0 },
+              ].map((itemback) => {
+                return (
+                  <td
+                    className="32047099_0availableToBack2_price_1171389306"
+                    onClick={() =>
+                      this.placeBet(
+                        "Back",
+                        this.state.marketOdds[0].runners[index].ex
+                          .availableToBack[2].price,
+                        itemback,
+                        item,
+                        this.state.marketOdds
+                      )
+                    }
+                  >
+                    <span id="32047099_0availableToBack2_price_1171389306">
+                      {itemback.price}
+                    </span>
+                    <span id="32047099_0availableToBack2_size_1171389306">
+                      {itemback.size}
+                    </span>
+                  </td>
+                );
+              });
+              availLay = [
+                { price: 0, size: 0.0 },
+                { price: 0, size: 0.0 },
+                { price: 0, size: 0.0 },
+              ].map((itemlay) => {
+                return (
+                  <td
+                    className="32047099_0availableToBack2_price_1171389306"
+                    onClick={() =>
+                      this.placeBet(
+                        "Lay",
+                        this.state.marketOdds[0].runners[index].ex
+                          .availableToLay[0].price,
+                        itemlay,
+                        item,
+                        this.state.marketOdds
+                      )
+                    }
+                  >
+                    <span id="32047099_0availableToBack2_price_1171389306">
+                      {itemlay.price}
+                    </span>
+                    <span id="32047099_0availableToBack2_size_1171389306">
+                      {itemlay.size}
+                    </span>
+                  </td>
+                );
+              });
             }
-
-            avilBlack = sordataBack.map((itemback) => {
-              return (
-                <td
-                  className="32047099_0availableToBack2_price_1171389306"
-                  onClick={() =>
-                    this.placeBet(
-                      "Back",
-                      this.state.marketOdds[0].runners[index].ex
-                        .availableToBack[2].price,
-                      itemback,
-                      item,
-                      this.state.marketOdds
-                    )
-                  }
-                >
-                  <span id="32047099_0availableToBack2_price_1171389306">
-                    {itemback.price}
-                  </span>
-                  <span id="32047099_0availableToBack2_size_1171389306">
-                    {itemback.size}
-                  </span>
-                </td>
-              );
-            });
-            let sordataLay = this.state.marketOdds[0].runners[
-              index
-            ].ex.availableToLay.sort(function (a, b) {
-              return a.price - b.price;
-            });
-            if (sordataLay.length < 3) {
-              sordataLay.push({ price: 0, size: 0.0 });
-            }
-            availLay = sordataLay.map((itemlay) => {
-              return (
-                <td
-                  className="32047099_0availableToBack2_price_1171389306"
-                  onClick={() =>
-                    this.placeBet(
-                      "Lay",
-                      this.state.marketOdds[0].runners[index].ex
-                        .availableToLay[0].price,
-                      itemlay,
-                      item,
-                      this.state.marketOdds
-                    )
-                  }
-                >
-                  <span id="32047099_0availableToBack2_price_1171389306">
-                    {itemlay.price}
-                  </span>
-                  <span id="32047099_0availableToBack2_size_1171389306">
-                    {itemlay.size}
-                  </span>
-                </td>
-              );
-            });
-          } else {
-            avilBlack = [
-              { price: 0, size: 0.0 },
-              { price: 0, size: 0.0 },
-              { price: 0, size: 0.0 },
-            ].map((itemback) => {
-              return (
-                <td
-                  className="32047099_0availableToBack2_price_1171389306"
-                  onClick={() =>
-                    this.placeBet(
-                      "Back",
-                      this.state.marketOdds[0].runners[index].ex
-                        .availableToBack[2].price,
-                      itemback,
-                      item,
-                      this.state.marketOdds
-                    )
-                  }
-                >
-                  <span id="32047099_0availableToBack2_price_1171389306">
-                    {itemback.price}
-                  </span>
-                  <span id="32047099_0availableToBack2_size_1171389306">
-                    {itemback.size}
-                  </span>
-                </td>
-              );
-            });
-            availLay = [
-              { price: 0, size: 0.0 },
-              { price: 0, size: 0.0 },
-              { price: 0, size: 0.0 },
-            ].map((itemlay) => {
-              return (
-                <td
-                  className="32047099_0availableToBack2_price_1171389306"
-                  onClick={() =>
-                    this.placeBet(
-                      "Lay",
-                      this.state.marketOdds[0].runners[index].ex
-                        .availableToLay[0].price,
-                      itemlay,
-                      item,
-                      this.state.marketOdds
-                    )
-                  }
-                >
-                  <span id="32047099_0availableToBack2_price_1171389306">
-                    {itemlay.price}
-                  </span>
-                  <span id="32047099_0availableToBack2_size_1171389306">
-                    {itemlay.size}
-                  </span>
-                </td>
-              );
-            });
           }
           return (
             <tr id="user_row0" className="back_lay_color runner-row-32047099">
@@ -823,6 +825,65 @@ export default class MatchOdds extends Component {
                     >
                       <div className="modal-dialog-staff">
                         {/* dialog body */}
+                        <div className="match_score_box">
+                          <div className="modal-header mod-header">
+                            Score Box
+                          </div>
+                          <div className="score_area">
+                            <div className="row" style={{padding:"1rem"}}>
+                              <div className="col-sm-2">
+                                <div className="score-btn">
+                                  0
+                                </div>
+                              </div>
+                              <div className="col-sm-2">
+                              <div className="score-btn">
+                                  1
+                                </div>
+                              </div>
+                              <div className="col-sm-2">
+                              <div className="score-btn">
+                                  2
+                                </div>
+                              </div>
+                              <div className="col-sm-2">
+                              <div className="score-btn">
+                                  3
+                                </div>
+                              </div>
+                              <div className="col-sm-2">
+                              <div className="score-btn">
+                                  4
+                                </div>
+                              </div>
+                              <div className="col-sm-2">
+                              <div className="score-btn">
+                                  5
+                                </div>
+                              </div>
+                              <div className="col-sm-2">
+                              <div className="score-btn">
+                                  6
+                                </div>
+                              </div>
+                              <div className="col-sm-2">
+                              <div className="score-btn">
+                                  7
+                                </div>
+                              </div>
+                              <div className="col-sm-2">
+                              <div className="score-btn">
+                                  8
+                                </div>
+                              </div>
+                              <div className="col-sm-2">
+                              <div className="score-btn">
+                                  9
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                         <div className="match_score_box">
                           <div className="modal-header mod-header">
                             <div className="block_box">
